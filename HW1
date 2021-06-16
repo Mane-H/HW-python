@@ -1,5 +1,4 @@
 #HW1
-
 #Problem 1: 4 digit
 
 def digit_sum(n):
@@ -39,7 +38,6 @@ an=progression(a1,a2,n)
 print(an)
 
 #problem 4: Century
-
 
 def century(y):
     if y%100==0:
