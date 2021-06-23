@@ -1,0 +1,51 @@
+### Problem 1:Digit product
+
+n = int(input("Enter any number n: "))
+
+a = 1
+
+for i in str(n):
+    if i != '0':
+        a = a * int(i)
+
+print(a)
+    
+### Problem 2: largest intereger
+
+N = int(input("Input any number N: "))
+
+a = 1
+
+while 3 * a <= N:
+    a = a * 3
+    
+print(a)
+
+###Problem 3: Triangle
+
+a = int(input("input a: "))
+b = int(input("input b: "))
+c = int(input("input c: "))
+
+if a + b <= c or a + c <= b or b + c <= a :
+    print("No Triangle")
+elif ( ( a^2 + b^2 - c^2 ) / ( 2 * a * b ) ) > 0 and ( ( a^2 + c^2 - a^2 ) / ( 2 * a * c) ) > 0 and ( ( b^2 + c^2 - a^2) / ( 2 * b * c )) > 0 :
+    print("Ocute Triangle")
+elif ( ( a^2 + b^2 - c^2 ) / ( 2 * a * b ) ) == 0 or ( ( a^2 + c^2 - a^2 ) / ( 2 * a * c) ) == 0 or ( ( b^2 + c^2 - a^2) / ( 2 * b * c )) == 0 :
+    print("Right Triangle")
+else:
+    print("Obtuse Triangle")
+    
+    
+#### Problem 4: The Root of the Number
+
+n = int(input("Input a number n: "))
+root = 0
+while n > 0 or root > 10 :
+    if n == 0 :
+        n = root
+        root = 0
+    digit = n % 10
+    root += digit
+    n //= 10
+print(root)
