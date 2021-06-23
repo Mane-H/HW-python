@@ -49,3 +49,26 @@ while n > 0 or root > 10 :
     root += digit
     n //= 10
 print(root)
+
+
+##### Problem 5:( from PSS2) Quadratic equation
+
+import math
+a = int(input("input a: "))
+b = int(input("input b: "))
+c = int(input("input c: "))
+
+
+if a == 0 :
+    print("Non-Quadratic equation")
+    if b == 0:
+        print("No solution")
+    else:
+        print("One solution: ", - c / b)
+else:
+    print("Quadratic equation")
+    d = b * b - 4 * a * c
+    print("Discriminant:", d)
+    x1 = (- b + math.sqrt(d)) / (2 * a)
+    x2 = (- b - math.sqrt(d)) / (2 * a)
+    print("Two solutions:", x1, x2)
