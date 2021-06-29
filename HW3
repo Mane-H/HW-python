@@ -1,0 +1,66 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Jun 29 12:36:13 2021
+
+@author: Mane
+"""
+##### Design stack, LIFO
+
+class Stack:
+     def __init__(self):
+         self.l = []
+
+     def is_empty(self):
+         return self.l == []
+
+     def push(self, new):
+         self.l.append(new)
+
+     def pop(self):
+         if self.is_empty():
+            return None
+         return self.l.pop()
+
+     def size(self):
+         return len(self.l)
+
+#### test validity
+s=Stack()
+print(s.is_empty())
+s.push(5)
+s.push('hello')
+#print(s.peek())
+s.push(67)
+print(s.size())
+print(s.is_empty())
+s.push('world')
+print(s.l)
+print(s.pop())
+print(s.pop())
+print(s.size())
+
+##### Problem 2:balanced brackets
+
+z = input("input:" )
+list = list(z)
+print(list)
+
+b = Stack()
+for i in range(0,len(list)):
+    if list[i]=='<' or list[i]=='(' or list[i]=='{' or list[i]=='[':
+        b.push(list[i])
+    elif list[i]=='>' or list[i]==')' or list[i]=='}' or list[i]==']':
+        if b.size()==0:
+            print(False)
+        top=b.pop()
+        if list[i]=='<' and top!='>':
+            print(False)
+        if list[i]=='(' and top!=')':
+            print(False)
+        if list[i]=='{' and top!='}':
+            print(False)
+        if list[i]=='[' and top!=']':
+            print(False)
+if b.size()!=0:
+    print(False)
+print(b.l)
