@@ -1,7 +1,4 @@
-# -*- coding: utf-8 -*-
 """
-Created on Tue Jun 29 12:36:13 2021
-
 @author: Mane
 """
 ##### Design stack, LIFO
@@ -39,28 +36,36 @@ print(s.pop())
 print(s.pop())
 print(s.size())
 
-##### Problem 2:balanced brackets
+######### Problem 2: balanced brackets
 
-z = input("input:" )
-list = list(z)
-print(list)
+def check_brackets(Str):
+    l=list(Str)
+    b=Stack()
+    for i in range(len(l)):
+        if l[i] == '{' or l[i] == '(' or l[i] == '[' or l[i] == '<':
+            b.push(l[i]) 
+        elif l[i] == '}' or l[i] == ')' or l[i] == ']' or l[i] == '>':
+            if b.size() == 0:
+                return False
+            last = b.pop() 
+            if not true_order(last, l[i]):
+                return False
+    if b.size() != 0:
+        return False       
+    return True
 
-b = Stack()
-for i in range(0,len(list)):
-    if list[i]=='<' or list[i]=='(' or list[i]=='{' or list[i]=='[':
-        b.push(list[i])
-    elif list[i]=='>' or list[i]==')' or list[i]=='}' or list[i]==']':
-        if b.size()==0:
-            print(False)
-        top=b.pop()
-        if list[i]=='<' and top!='>':
-            print(False)
-        if list[i]=='(' and top!=')':
-            print(False)
-        if list[i]=='{' and top!='}':
-            print(False)
-        if list[i]=='[' and top!=']':
-            print(False)
-if b.size()!=0:
-    print(False)
-print(b.l)
+def true_order(open, close):
+    if open == '(' and close == ')':
+        return True
+    elif open == '[' and close == ']':
+        return True
+    elif open == '{' and close == '}':
+        return True  
+    elif open == '<' and close == '>':
+        return True
+    else:
+        return False
+
+# Test function 
+z = input("input String: " )
+print(check_brackets(z))
