@@ -69,3 +69,54 @@ def true_order(open, close):
 # Test function 
 z = input("input String: " )
 print(check_brackets(z))
+
+
+###Problem 3: Stack with getMIn() in O(1)
+
+"""
+ we are going to create a new stack (Stack with getMin)
+ which will inherit ordinary Stack's all properties by using function super() 
+ and will also cointain a slack of Mins: 
+ i.e when new value will be added toour main stack_with_getMIn,
+ this value will be compared with the last value af the stack and 
+ if it is the min, it will be pushed to stack of Mins, otherwise
+ we will push same last value of Mins stack again to Mins stack.  
+ Also, when deleteing the last value from main stack, 
+ that value should be deleted from Mins stack as well
+"""
+class Stack_with_getMin(Stack):
+     def __init__(self):
+         super().__init__()
+         self.Min=Stack()
+
+     def push(self, last):
+         if self.is_empty():
+             super().push(last)
+             self.Min.push(last)
+         else:
+             super().push(last)
+             min = self.Min.pop()
+             self.Min.push(min)
+             if last <= min:
+                 self.Min.push(last)
+             else:
+                 self.Min.push(min)
+                 
+     def pop(self):
+         last = super().pop()
+         self.Min.pop()
+         return last
+ 
+     def getMin(self):
+         last = self.Min.pop()
+         self.Min.push(last)
+         return last
+
+#### test validity
+s = Stack_with_getMin()
+s.push(24)
+s.push(11)
+s.push(35)
+print(s.getMin())
+s.push(8)
+print(s.getMin())
