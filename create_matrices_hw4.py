@@ -26,5 +26,5 @@ def create_matrix(filename, shape):
 
 
 if __name__ == '__main__':
-    create_matrix('A.txt', (1000, 1000))
-    create_matrix('B.txt', (1000, 1000))
+    create_matrix('A.txt', (10, 10))
+    create_matrix('B.txt', (10, 10))
