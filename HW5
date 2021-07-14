@@ -1,0 +1,74 @@
+###Mane Harutyunyan
+#### Problem 1: Beautiful_String
+
+
+def beautiful_string(b):
+    l = list(b)
+    s = ['0','1','0']
+    sum = 0
+    for i in range (0, len(l)):
+        if l[i:i+3] == s:
+            l[i+2] = 1
+            sum += 1
+            #print(l)
+    return sum
+
+#b="100100101010"
+b=input("Input a binary string: ")
+print(beautiful_string(b))
+
+####problem 2: Ice Cream Parlor
+
+## Solution 1: Bad solution :) 
+def whatFlavors1(cost, money):
+    for i in range(0, len(cost)):
+        for j in range(i+1, len(cost)):
+            if cost[i] + cost[j] == money:
+               print(i+1, j+1)
+    
+##Alternative: O(n) 
+
+def whatFlavors2(cost, money):
+    saved = {}
+    for i, value_1 in enumerate(cost):
+        value_2 = money-value_1
+        if value_2 in saved:
+            print(saved[value_2], i+1)
+        saved[value_1] = i+1
+        
+whatFlavors1([2,3,1,4], 6)
+whatFlavors2([2,3,1,4], 6)
+
+####### Problem 3: Number of Good Pairs
+nums = [1,2,3,1,5,1]
+good = 0
+for i in range (0, len(nums)):
+    for j in range(i+1, len(nums)):
+        if nums[i] == nums[j]:
+            good += 1
+            print (i,j)
+print (good)
+
+######## Problem 4: String power
+
+def string_power(s, k):
+    if k >= 0:
+        power = k * s
+        return power
+    elif len(s)%(k) != 0:
+        return 'undefined'
+    else:
+        t = len(s) // (-k)
+        x = s[0:t]
+        r = x * (-k)
+        if s == r:
+            return x
+        else:
+            return 'undefined'
+
+#print(string_power('adfadf',-2))
+
+s=input("Input a string: " )
+k=int(input ("Input an integer: "))
+print(string_power(s, k))
+
